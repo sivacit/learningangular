@@ -1,0 +1,67 @@
+<h1>Hello world</h1>
+<div id="content">
+  <div class="container">
+    <router-outlet></router-outlet>
+</div>
+</div>
+
+
+<h1>Demo form</h1>
+<form #formName="ngForm" (ngSubmit)="onTestSumbit(formName.value)">
+  <div>
+    <label>SKU</label>
+    <input type="text" id="skuInput" placeholder="SKU" name="sku" ngModel>
+  </div>
+  <div>
+    After Tax: {{taxPrice}}
+  </div>
+  <button type="submit">Save</button>
+</form>
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSumbit(myForm.value)">
+    <label>SKU</label>
+    <input type="text" id="skuInput" placeholder="SKU" [formControl]="myForm.controls['sku']">
+    <button type="submit">Save</button>
+</form>
+<!-- Case sesitive and need to check in console for errors-->
+<div *ngIf="data.admin == 'true'">
+  <H1>Welcome to angular course</H1>
+</div>
+<div *ngIf="data.salary >= 2000">
+  <H1>Salary is {{data.salary}}</H1>
+</div>
+<p>Switch example</p>
+<div>
+  <label>Room Type</label>
+  <div [ngSwitch]="data.category">
+    <p *ngSwitchCase="'delux'">
+      Delux Room for you
+    </p>
+    <p *ngSwitchCase="'super-delux'">
+      Super Delux room for you
+    </p>
+    <p *ngSwitchCase="'ultra-delux'">
+      Welcome VIP, Ultra delux room for you
+    </p>
+    <p *ngSwitchDefault>
+      enn da vantha
+     </p>
+  </div>
+</div>
+
+<H3>Class example</H3>
+<div [ngClass]="getGender()">Sex:</div>        
+ 
+<div *ngIf="isMale()">
+    <img src="assets/male.jpg" class="gender"/>   
+</div>
+
+<select>
+    <option  *ngFor="let c of cities;let num=index" value="c">
+      {{num}}-{{c}}
+    </option>
+</select>
+
+<!-- Multiple styles -->
+<!-- <div [ngStyle]="{'color:colorRed','font-size:\"30px\"'}">{{colorRed}} Sex:</div> -->
