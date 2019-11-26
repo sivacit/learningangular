@@ -1,0 +1,10 @@
+img.gender{
+    width: 40px;
+    height: 40px;
+}
+div.male{
+    color: blue;
+}
+div.female{
+    color:pink;
+}
