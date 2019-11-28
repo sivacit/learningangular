@@ -4,7 +4,9 @@
     <router-outlet></router-outlet>
 </div>
 </div>
-
+<div>
+  <h1>{{read_from_server}}</h1>
+</div>
 
 <h1>Demo form</h1>
 <form #formName="ngForm" (ngSubmit)="onTestSumbit(formName.value)">

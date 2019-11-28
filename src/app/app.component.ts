@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ReflectiveInjector } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PriceService} from './price.service'
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +13,16 @@ export class AppComponent implements OnInit{
   
   myForm:FormGroup
   sku = "test"
-  ps:PriceService
+  injector:any
   taxPrice: number  
-
-  constructor(fb:FormBuilder){  
-    this.ps = new PriceService()
-
+  read_from_server = "";
+  constructor(fb:FormBuilder, private ps:PriceService, http:HttpClient){  
+    // this.ps = new PriceService()
+    // this.injector = ReflectiveInjector.resolveAndCreate([PriceService])
+    // this.ps = this.injector.get(PriceService)
+    http.get("http://localhost:3000/").subscribe(data => {
+      this.read_from_server = data.message.toString();
+    })
     this.myForm = fb.group({
       "sku":['adsfsdfsdfC123', Validators.required]
     })
@@ -48,9 +54,11 @@ export class AppComponent implements OnInit{
 
   }
   onTestSumbit(form:any): void{
-    this.taxPrice = this.ps.calculateTax(form.sku)   
+    this.taxPrice = this.ps.calculateTax(form.sku, 28)   
+
   }
   onSumbit(price:number): void{    
     console.log("you have submitted from form builder ", this.taxPrice) 
    }
+
 }
