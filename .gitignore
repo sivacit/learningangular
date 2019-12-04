@@ -40,7 +40,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-
+node_modules
 # System Files
 .DS_Store
 Thumbs.db
