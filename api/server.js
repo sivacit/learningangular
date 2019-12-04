@@ -1,31 +1,59 @@
-const express = require('express');
-const cors = require('cors')
-const bodyParser = require('body-parser');
-config = require('./DB');
-mongoose = require('mongoose');
-rooms = require('./Rooms')
-const app = express();
+const express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    mongoose = require('mongoose'),
+    config = require('./DB');
 
-// parse request    s of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
-// parse requests of content-type - application/json
-app.use(bodyParser.json())
-
+let Device = require('./Device')
 mongoose.Promise = global.Promise;
-    mongoose.connect(config.DB, { useNewUrlParser: true }).then(
-      () => {console.log('Database is connected') },
-      err => { console.log('Can not connect to the database'+ err)}
+mongoose.connect(config.DB, { useNewUrlParser: true }).then(
+  () => {console.log('Database is connected') },
+  err => { console.log('Cannot connect to the database'+ err)}
 );
 
-// define a simple route
-app.get('/welcome', (req, res) => {
-    let name = rooms.find({"_id":"10030955"}, function(err, rooms) {
-        res.json({"message": "Welcome to " + rooms});    
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+// app.use(express.static(path.join(__dirname,'../dist/angular7crud')));
+
+app.post("/devices", function(req, res){
+  let dev = new Device(req.body);
+  dev.save()
+    .then(dev => {
+      res.status(200).json({'Device': 'Device in added successfully'});
     })
+    .catch(err => {
+    res.status(400).send("unable to save to database");
+    });
+})
+
+app.get("/devices", function (req, res) {
+  Device.find(function (err, devList){
+  if(err){
+    console.log(err);
+  }
+  else {
+    res.json(devList);
+  }
+});
 });
 
-// listen for requests
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+app.get("/devices/:id", function (req, res) {
+  let id = req.params.id;
+  Device.findById(id, function (err, device){
+    if (err){
+      console.log(err)
+    }
+    else{
+      res.json(device);
+    }    
+  });
+});
+
+
+const port = process.env.PORT || 3000;
+
+const server = app.listen(port, function(){
+  console.log('Listening on port ' + port);
 });
