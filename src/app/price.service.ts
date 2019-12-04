@@ -1,11 +1,11 @@
-// import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn:'root'
+})
 export class PriceService {
   constructor() { }
-  calculateTax(price:number):number{  
-    return (Number(price) + 20)
+  calculateTax(price:number, taxValue:number):number{  
+    return (Number(price) + taxValue)
   }
 }

@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router'
-
+import {PriceService} from './price.service'
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,9 +33,10 @@ const routes:Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes), // <-- routes
     AppRoutingModule,
-    
+    CommonModule,
+    HttpClientModule    
   ],
-  providers: [],
+  providers: [PriceService],
   bootstrap: [AppComponent]
 })
 
