@@ -6,25 +6,31 @@ import { environment } from './../environments/environment';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component1.html',
+  templateUrl: './devices.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
   
   myForm:FormGroup
+  deviceForm:FormGroup
   sku = "test"
   injector:any
   taxPrice: number  
-  read_from_server = "";
-  constructor(fb:FormBuilder, private ps:PriceService, http:HttpClient){  
+  devices:any;
+  constructor(fb:FormBuilder, private ps:PriceService,public http:HttpClient){  
     // this.ps = new PriceService()
     // this.injector = ReflectiveInjector.resolveAndCreate([PriceService])
     // this.ps = this.injector.get(PriceService)
-    http.get("http://localhost:3000/").subscribe(data => {
-      this.read_from_server = data.message.toString();
+    this.http.get("http://localhost:3000/devices/").subscribe(d2 => {
+      this.devices = d2;
     })
+    
     this.myForm = fb.group({
       "sku":['adsfsdfsdfC123', Validators.required]
+    })
+    this.deviceForm = fb.group({
+      "name": ['', Validators.required],
+      "description": ['']
     })
   }
 
@@ -61,4 +67,9 @@ export class AppComponent implements OnInit{
     console.log("you have submitted from form builder ", this.taxPrice) 
    }
 
+  saveDevices(form:any): void{
+    this.http.post("http://localhost:3000/devices", form).subscribe(function(d2) {      
+      this.devices = d2
+    })
+   }
 }

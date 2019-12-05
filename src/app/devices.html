@@ -1,0 +1,22 @@
+<form [formGroup]="deviceForm" (ngSubmit)="saveDevices(deviceForm.value)">
+  <div>
+      <label>Device Name</label>
+      <input type="text" id="deviceInput" placeholder="Device Name" [formControl]="deviceForm.controls['name']">    
+  </div>
+  <div>
+      <label>Device Description</label>
+      <input type="text" id="descInput" placeholder="Enter Description" [formControl]="deviceForm.controls['description']">    
+  </div>
+  <button type="submit">Save</button>
+</form>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+  <tr  *ngFor="let dev of devices">
+    <td>{{dev.name}}</td>
+    <td>{{dev.description}}</td>
+  </tr>
+</table>
