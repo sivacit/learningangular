@@ -12,6 +12,7 @@ import { environment } from './../environments/environment';
 export class AppComponent implements OnInit{
   
   myForm:FormGroup
+  device:any;
   deviceForm:FormGroup
   sku = "test"
   injector:any
@@ -66,7 +67,17 @@ export class AppComponent implements OnInit{
   onSumbit(price:number): void{    
     console.log("you have submitted from form builder ", this.taxPrice) 
    }
-
+  deleteDevice(id:string): void{
+    this.http.delete("http://localhost:3000/devices/" + id).subscribe(function(d2) {      
+      alert("Device deleted successfully!")
+    })
+  }
+  loadDevice(id:string): void{
+    this.http.get("http://localhost:3000/devices/" + id).subscribe(function(d2) {  
+      var dev = JSON.parse(JSON.stringify(d2))            
+      alert(this.deviceForm)
+    })
+  }
   saveDevices(form:any): void{
     this.http.post("http://localhost:3000/devices", form).subscribe(function(d2) {      
       this.devices = d2

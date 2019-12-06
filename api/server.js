@@ -39,6 +39,25 @@ app.get("/devices", function (req, res) {
 });
 });
 
+app.put("/devices/:id", function (req, res) {
+  Device.findByIdAndUpdate(req.params.id, req.body, (err, device) => {
+      if (err) {
+          return res.status(500).send({error: "unsuccessful"})
+      };
+      res.send({success: "success"});
+  })
+});
+
+app.delete("/devices/:id", function (req, res) {
+  Device.deleteOne({_id: req.params.id}, (err, device) => {
+      if (err) {
+          console.log(err)
+          return res.status(500).send({error: "unsuccessful"})
+      };
+      res.send({success: "success"});
+  })
+});
+
 app.get("/devices/:id", function (req, res) {
   let id = req.params.id;
   Device.findById(id, function (err, device){
