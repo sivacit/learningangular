@@ -15,9 +15,9 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname,'../dist/angular7crud')));
+app.use(express.static(path.join(__dirname,'./dist/')));
 app.get("/", function(req, res){
-  res.send("First page deployed!")
+  res.sendFile(path.join(__dirname,'./dist','index.html'))
 })
 app.post("/devices", function(req, res){
   let dev = new Device(req.body);

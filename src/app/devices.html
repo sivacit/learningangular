@@ -1,16 +1,16 @@
 <form [formGroup]="deviceForm" (ngSubmit)="saveDevices(deviceForm.value)">
   <div>
-     <input type="hidden" id="deviceInput"  [formControl]="deviceForm.controls['_id']">    
+     <input type="hidden" id="idInput"  [formControl]="deviceForm.controls['_id']">    
   </div>  
   <div>
       <label>Device Name</label>
-      <input type="text" id="deviceInput" placeholder="Device Name" [formControl]="deviceForm.controls['name']">    
+      <input type="text" id="nameInput" placeholder="Device Name" [formControl]="deviceForm.controls['name']">    
   </div>
   <div>
       <label>Device Description</label>
       <input type="text" id="descInput" placeholder="Enter Description" [formControl]="deviceForm.controls['description']">    
   </div>
-  <button type="submit">Save</button>
+  <button type="submit">Save</button>  
 </form>
 
 <table>
