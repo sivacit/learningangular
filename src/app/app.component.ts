@@ -96,7 +96,9 @@ export class AppComponent implements OnInit{
     if (form._id == undefined){
       this.http.post("http://localhost:3000/devices", form).subscribe(function(d2) {      
         this.devices = d2
+        thisObj.loadList();
       })
+
     }
     else{
       this.http.put("http://localhost:3000/devices/" + form._id, form).subscribe(function(d2) {      

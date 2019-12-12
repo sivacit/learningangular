@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 const businessRoutes = express.Router();
 
 // Require Business model in our routes module
