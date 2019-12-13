@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ProductComponent } from './product/product.component';
 
 const routes:Routes = [
   { path: '', component: LoadingComponent },
@@ -25,7 +26,8 @@ const routes:Routes = [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    LoadingComponent
+    LoadingComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
