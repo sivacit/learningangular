@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ProductComponent } from './product/product.component';
 import { DevicesComponent } from './devices/devices.component';
 import { UsersComponent } from './users/users.component';
 
@@ -29,6 +30,7 @@ const routes:Routes = [
     HomeComponent,
     AboutComponent,
     LoadingComponent,
+    ProductComponent,
     DevicesComponent,
     UsersComponent
   ],
