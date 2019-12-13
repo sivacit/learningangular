@@ -1,17 +1,19 @@
-<div class="page-header">
-  <div class="container">
-<div class="navLinks">
-  <a [routerLink]="['/home']">Home</a>&nbsp;&nbsp;
-  <a [routerLink]="['/about']">About Us</a>&nbsp;&nbsp;
-  <a [routerLink]="['/contact']">Contact Us</a>&nbsp;&nbsp;
-  <a [routerLink]="['/products']">Products</a>&nbsp;&nbsp;
-  <a [routerLink]="['/login']">Login</a>&nbsp;&nbsp;
-  <a [routerLink]="['/protected']">Protected</a>&nbsp;&nbsp;
-  <a href="./about/Niranjana">New About Us</a>&nbsp;&nbsp;
-</div>
-</div>
-</div>
-
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="devices" class="nav-link" routerLinkActive="active">
+          Devices
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="users" class="nav-link" routerLinkActive="active">
+          Users
+        </a>
+      </li> 
+    </ul>
+  </div>
+</nav>
 <div id="content">
   <div class="container">
     <router-outlet>

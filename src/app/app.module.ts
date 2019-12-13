@@ -12,11 +12,14 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ProductComponent } from './product/product.component';
+import { DevicesComponent } from './devices/devices.component';
+import { UsersComponent } from './users/users.component';
 
 const routes:Routes = [
   { path: '', component: LoadingComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'about/:category/:product', component: AboutComponent }
+  { path: 'devices', component: DevicesComponent },
+  { path: 'users', component: UsersComponent }
   // { path: 'contact', component: ContactComponent },
   // { path: 'contactus', redirectTo: 'contact' }
 ]
@@ -28,6 +31,8 @@ const routes:Routes = [
     AboutComponent,
     LoadingComponent,
     ProductComponent
+    DevicesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,5 @@ const routes:Routes = [
   providers: [PriceService],
   bootstrap: [AppComponent]
 })
-
 
 export class AppModule { }
