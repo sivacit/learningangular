@@ -30,7 +30,7 @@ const routes:Routes = [
     HomeComponent,
     AboutComponent,
     LoadingComponent,
-    ProductComponent
+    ProductComponent,
     DevicesComponent,
     UsersComponent
   ],
