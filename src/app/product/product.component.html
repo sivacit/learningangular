@@ -1,1 +1,41 @@
-<p>product works!</p>
+
+<form [formGroup]="deviceform" (ngSubmit)="savedevices(deviceform.value)">
+    <!-- <div>
+        <input type="hidden" id="idinput" [formControl]="deviceform.controls['_id']">
+    </div>
+    <div> -->
+ <div>
+    <label>Product</label>
+    <input type="text" id="name" placeholder="productname" [formControl]="deviceform.controls['name']">
+</div>
+<div>
+    <label>Product Description</label>
+    <input type="text" id="description" placeholder="product description" [formControl]="deviceform.controls['description']">
+</div>
+<div>
+    <label>Quantity</label>
+    <input type="text" id="quans" placeholder="number" [formControl]="deviceform.controls['qty']">
+</div>
+<button type="submit">save</button>
+</form>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>description</td>
+        <td>Quantity</td>
+        <td>Action</td>
+    </tr>
+</table>
+
+<!--table>
+    <tr *ngFor=let p of Products>
+        <td>{{p._id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.descrption}}</td>
+        <td>{{p.Quantity}}</td>
+        <td><button (click)="editdevices(p._id)">edit</button>
+            <button (click)="deletedevices(p._id)">delete</button></td>
+</tr>
+</table-->
