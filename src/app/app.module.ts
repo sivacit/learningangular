@@ -19,7 +19,9 @@ const routes:Routes = [
   { path: '', component: LoadingComponent },
   { path: 'home', component: HomeComponent },
   { path: 'devices', component: DevicesComponent },
-  { path: 'users', component: UsersComponent }
+  { path: 'users', component: UsersComponent },
+  { path: 'products', component: ProductComponent }
+
   // { path: 'contact', component: ContactComponent },
   // { path: 'contactus', redirectTo: 'contact' }
 ]
