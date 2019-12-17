@@ -6,6 +6,7 @@ const express = require('express'),
     config = require('./DB');
 var devicesRoute = require('./device.route');
 var productRoute = require('./product.route');
+var empRoute = require('./emp.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -24,6 +25,7 @@ app.get("/", function(req, res){
 
 app.use('/devices', devicesRoute);
 app.use('/products', productRoute);
+app.use('/employee', empRoute);
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, function(){

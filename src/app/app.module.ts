@@ -14,13 +14,15 @@ import { LoadingComponent } from './loading/loading.component';
 import { ProductComponent } from './product/product.component';
 import { DevicesComponent } from './devices/devices.component';
 import { UsersComponent } from './users/users.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes:Routes = [
   { path: '', component: LoadingComponent },
   { path: 'home', component: HomeComponent },
   { path: 'devices', component: DevicesComponent },
   { path: 'users', component: UsersComponent },
-  { path: 'products', component: ProductComponent }
+  { path: 'products', component: ProductComponent },
+  {path:'employee' , component: EmployeeComponent}
 
   // { path: 'contact', component: ContactComponent },
   // { path: 'contactus', redirectTo: 'contact' }
@@ -34,7 +36,8 @@ const routes:Routes = [
     LoadingComponent,
     ProductComponent,
     DevicesComponent,
-    UsersComponent
+    UsersComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
